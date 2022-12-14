@@ -36,7 +36,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.createCredentialOfferWithConnection = exports.createCredentialOffer = exports.createSchema = exports.createCredentnialDefinition = exports.getCredentialDefinition = exports.getSchema = void 0;
+exports.acceptRequest = exports.createCredentialOfferWithConnection = exports.createCredentialOffer = exports.createSchema = exports.createCredentnialDefinition = exports.getCredentialDefinition = exports.getCredential = exports.getSchema = void 0;
+var core_1 = require("@aries-framework/core");
 var getSchema = function (agent, id) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -46,6 +47,12 @@ var getSchema = function (agent, id) { return __awaiter(void 0, void 0, void 0, 
     });
 }); };
 exports.getSchema = getSchema;
+var getCredential = function (agent) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        return [2 /*return*/];
+    });
+}); };
+exports.getCredential = getCredential;
 var getCredentialDefinition = function (agent, id) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -109,10 +116,22 @@ var createCredentialOfferWithConnection = function (agent, credentialDefinitionI
                             attributes: attributes
                         }
                     },
-                    connectionId: connectionId
+                    connectionId: connectionId,
+                    autoAcceptCredential: core_1.AutoAcceptCredential.Never
                 })];
             case 1: return [2 /*return*/, _a.sent()];
         }
     });
 }); };
 exports.createCredentialOfferWithConnection = createCredentialOfferWithConnection;
+var acceptRequest = function (agent, credentialRecordId) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, agent.credentials.acceptRequest({
+                    credentialRecordId: credentialRecordId
+                })];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
+    });
+}); };
+exports.acceptRequest = acceptRequest;
